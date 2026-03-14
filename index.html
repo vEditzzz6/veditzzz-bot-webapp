@@ -379,6 +379,306 @@
             0%, 60%, 100% { transform: translateY(0); }
             30% { transform: translateY(-10px); }
         }
+        
+        /* Weather Widget Styles */
+        .weather-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .weather-card .card-title {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .weather-search {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .weather-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .weather-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .weather-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .weather-result {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .weather-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .weather-icon {
+            font-size: 48px;
+        }
+        
+        .weather-temp {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .weather-desc {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .weather-details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 16px;
+        }
+        
+        .weather-detail {
+            text-align: center;
+        }
+        
+        .detail-label {
+            display: block;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        /* Activity Chart Styles */
+        .chart-container {
+            margin-top: 12px;
+        }
+        
+        .activity-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 120px;
+            gap: 8px;
+            padding: 8px 0;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px 4px 0 0;
+            min-height: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .chart-bar:hover {
+            opacity: 0.8;
+        }
+        
+        .chart-bar::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .chart-bar:hover::after {
+            opacity: 1;
+        }
+        
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--tg-theme-hint-color, #999);
+        }
+        
+        /* Reminders Styles */
+        .reminder-input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+        }
+        
+        .reminders-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .reminder-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .reminder-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        
+        .reminder-content {
+            flex: 1;
+        }
+        
+        .reminder-text {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .reminder-time {
+            font-size: 12px;
+            color: var(--tg-theme-hint-color, #999);
+        }
+        
+        .reminder-delete {
+            background: none;
+            border: none;
+            color: #f44336;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: var(--tg-theme-hint-color, #999);
+            padding: 24px;
+        }
+        
+        /* Profile Styles */
+        .profile-card {
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 16px;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .profile-id {
+            font-size: 12px;
+            color: var(--tg-theme-hint-color, #999);
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-label {
+            font-size: 15px;
+        }
+        
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 26px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+        
+        /* Dark Mode */
+        body.dark-mode {
+            --tg-theme-bg-color: #1a1a2e;
+            --tg-theme-secondary-bg-color: #16213e;
+            --tg-theme-text-color: #eee;
+            --tg-theme-hint-color: #888;
+        }
     </style>
 </head>
 <body>
@@ -387,6 +687,8 @@
         <div class="tab-nav">
             <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard</button>
             <button class="tab-btn" onclick="showTab('chat')">Chat</button>
+            <button class="tab-btn" onclick="showTab('reminders')">Reminders</button>
+            <button class="tab-btn" onclick="showTab('profile')">Profile</button>
         </div>
         
         <!-- Dashboard Tab -->
@@ -410,6 +712,45 @@
                 <button class="btn btn-primary" onclick="upgradePlan()">Upgrade to Pro</button>
             </div>
             
+            <!-- Weather Widget -->
+            <div class="card weather-card">
+                <div class="card-title">🌤️ Weather</div>
+                <div class="weather-search">
+                    <input type="text" id="weather-city" placeholder="Enter city..." class="weather-input">
+                    <button onclick="getWeather()" class="weather-btn">🔍</button>
+                </div>
+                <div id="weather-result" class="weather-result hidden">
+                    <div class="weather-main">
+                        <span id="weather-icon" class="weather-icon">☀️</span>
+                        <span id="weather-temp" class="weather-temp">--°</span>
+                    </div>
+                    <div id="weather-desc" class="weather-desc">--</div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <span class="detail-label">💧 Humidity</span>
+                            <span id="weather-humidity" class="detail-value">--%</span>
+                        </div>
+                        <div class="weather-detail">
+                            <span class="detail-label">💨 Wind</span>
+                            <span id="weather-wind" class="detail-value">-- km/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Chart -->
+            <div class="card">
+                <div class="card-title">📈 Activity (Last 7 Days)</div>
+                <div class="chart-container">
+                    <div id="activity-chart" class="activity-chart">
+                        <!-- Bars will be generated by JS -->
+                    </div>
+                    <div class="chart-labels">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Usage Stats -->
             <div class="card">
                 <div class="card-title">Usage This Month</div>
@@ -442,6 +783,76 @@
                     <li class="feature-locked">File Operations</li>
                     <li class="feature-locked">Advanced Search</li>
                 </ul>
+            </div>
+        </div>
+        
+        <!-- Reminders Tab -->
+        <div id="reminders" class="tab-content hidden">
+            <div class="header">
+                <h1>⏰ Reminders</h1>
+                <p>Manage your reminders</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Set New Reminder</div>
+                <input type="text" id="reminder-text" placeholder="What to remind you about?" class="reminder-input">
+                <input type="datetime-local" id="reminder-time" class="reminder-input">
+                <button class="btn btn-primary" onclick="addReminder()">Set Reminder</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Your Reminders</div>
+                <div id="reminders-list" class="reminders-list">
+                    <p class="empty-state">No reminders set yet</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content hidden">
+            <div class="header">
+                <h1>👤 Profile</h1>
+                <p>Your account settings</p>
+            </div>
+            
+            <div class="card profile-card">
+                <div class="profile-avatar" id="profile-avatar">👤</div>
+                <div class="profile-name" id="profile-name">User</div>
+                <div class="profile-id" id="profile-id">ID: --</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Settings</div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">🔔 Notifications</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notifications-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">📊 Compact View</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="compact-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Account</div>
+                <button class="btn btn-secondary" onclick="exportData()">📥 Export Data</button>
+                <button class="btn btn-secondary" onclick="contactSupport()">💬 Contact Support</button>
             </div>
         </div>
         
@@ -706,6 +1117,179 @@
         
         // Load customer info when dashboard is shown
         loadCustomerInfo();
+        
+        // Initialize activity chart
+        initActivityChart();
+        
+        // Load reminders
+        loadReminders();
+        
+        // Set default reminder time to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setMinutes(tomorrow.getMinutes() - tomorrow.getTimezoneOffset());
+        document.getElementById('reminder-time').value = tomorrow.toISOString().slice(0,16);
+        
+        // Weather function
+        async function getWeather() {
+            const city = document.getElementById('weather-city').value.trim();
+            if (!city) return;
+            
+            const weatherResult = document.getElementById('weather-result');
+            weatherResult.classList.remove('hidden');
+            
+            // Mock weather data - replace with actual API call
+            const weatherData = {
+                temp: Math.floor(Math.random() * 15) + 15,
+                desc: ['Sunny', 'Cloudy', 'Rainy', 'Partly Cloudy'][Math.floor(Math.random() * 4)],
+                humidity: Math.floor(Math.random() * 40) + 40,
+                wind: Math.floor(Math.random() * 20) + 5,
+                icon: '☀️'
+            };
+            
+            // Update UI
+            document.getElementById('weather-temp').textContent = weatherData.temp + '°';
+            document.getElementById('weather-desc').textContent = weatherData.desc;
+            document.getElementById('weather-humidity').textContent = weatherData.humidity + '%';
+            document.getElementById('weather-wind').textContent = weatherData.wind + ' km/h';
+            document.getElementById('weather-icon').textContent = weatherData.icon;
+        }
+        
+        // Activity chart
+        function initActivityChart() {
+            const chart = document.getElementById('activity-chart');
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const values = [12, 19, 8, 25, 15, 30, 22];
+            const max = Math.max(...values);
+            
+            days.forEach((day, i) => {
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = (values[i] / max * 100) + '%';
+                bar.setAttribute('data-value', values[i]);
+                bar.title = day + ': ' + values[i] + ' messages';
+                chart.appendChild(bar);
+            });
+        }
+        
+        // Reminders
+        let reminders = [];
+        
+        function loadReminders() {
+            const saved = localStorage.getItem('reminders');
+            if (saved) {
+                reminders = JSON.parse(saved);
+                renderReminders();
+            }
+        }
+        
+        function saveReminders() {
+            localStorage.setItem('reminders', JSON.stringify(reminders));
+        }
+        
+        function addReminder() {
+            const text = document.getElementById('reminder-text').value.trim();
+            const time = document.getElementById('reminder-time').value;
+            
+            if (!text || !time) return;
+            
+            reminders.push({
+                id: Date.now(),
+                text: text,
+                time: time,
+                completed: false
+            });
+            
+            saveReminders();
+            renderReminders();
+            
+            // Clear inputs
+            document.getElementById('reminder-text').value = '';
+        }
+        
+        function toggleReminder(id) {
+            const reminder = reminders.find(r => r.id === id);
+            if (reminder) {
+                reminder.completed = !reminder.completed;
+                saveReminders();
+                renderReminders();
+            }
+        }
+        
+        function deleteReminder(id) {
+            reminders = reminders.filter(r => r.id !== id);
+            saveReminders();
+            renderReminders();
+        }
+        
+        function renderReminders() {
+            const list = document.getElementById('reminders-list');
+            
+            if (reminders.length === 0) {
+                list.innerHTML = '<p class="empty-state">No reminders set yet</p>';
+                return;
+            }
+            
+            list.innerHTML = reminders.map(r => `
+                <div class="reminder-item">
+                    <input type="checkbox" class="reminder-checkbox" 
+                        ${r.completed ? 'checked' : ''} 
+                        onchange="toggleReminder(${r.id})">
+                    <div class="reminder-content">
+                        <div class="reminder-text" style="${r.completed ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${escapeHtml(r.text)}</div>
+                        <div class="reminder-time">${new Date(r.time).toLocaleString()}</div>
+                    </div>
+                    <button class="reminder-delete" onclick="deleteReminder(${r.id})">🗑️</button>
+                </div>
+            `).join('');
+        }
+        
+        // Dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('dark-mode-toggle').checked = true;
+        }
+        
+        // Export data
+        function exportData() {
+            const data = {
+                reminders: reminders,
+                chatHistory: [],
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'veditzzz-data.json';
+            a.click();
+            
+            tg.showPopup({
+                title: 'Data Exported',
+                message: 'Your data has been downloaded!'
+            });
+        }
+        
+        // Contact support
+        function contactSupport() {
+            tg.openTelegramLink('https://t.me/vEditzzz');
+        }
+        
+        // Update profile info
+        if (user) {
+            document.getElementById('profile-name').textContent = user.first_name + (user.last_name ? ' ' + user.last_name : '');
+            document.getElementById('profile-id').textContent = 'ID: ' + user.id;
+            if (user.photo_url) {
+                document.getElementById('profile-avatar').innerHTML = '<img src="' + user.photo_url + '" style="width: 80px; height: 80px; border-radius: 50%;">';
+            }
+        }
     </script>
 </body>
 </html>
