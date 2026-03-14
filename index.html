@@ -679,6 +679,739 @@
             --tg-theme-text-color: #eee;
             --tg-theme-hint-color: #888;
         }
+        
+        /* Chat Toolbar */
+        .chat-toolbar {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+        }
+        
+        .toolbar-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .toolbar-btn:hover {
+            background: var(--tg-theme-button-color, #2481cc);
+            transform: scale(1.1);
+        }
+        
+        .toolbar-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .toolbar-btn.recording {
+            background: #f44336;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Emoji Picker */
+        .emoji-picker {
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .emoji-categories {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+        }
+        
+        .emoji-categories button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+        
+        .emoji-categories button:hover {
+            background: var(--tg-theme-bg-color, #f5f5f5);
+        }
+        
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .emoji-item {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        
+        .emoji-item:hover {
+            background: var(--tg-theme-bg-color, #f5f5f5);
+        }
+        
+        /* Image Message */
+        .message-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .message-file {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .message-file-icon {
+            font-size: 24px;
+        }
+        
+        .message-file-info {
+            flex: 1;
+        }
+        
+        .message-file-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .message-file-size {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        /* Voice Message */
+        .voice-message {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 20px;
+        }
+        
+        .voice-play-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .voice-waveform {
+            flex: 1;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .voice-bar {
+            width: 3px;
+            background: var(--tg-theme-button-color, #2481cc);
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+        
+        .voice-duration {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        /* Recording Indicator */
+        .recording-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 24px 48px;
+            border-radius: 16px;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .recording-indicator .mic-icon {
+            font-size: 48px;
+            animation: pulse 1s infinite;
+        }
+        
+        .recording-indicator .recording-time {
+            font-size: 24px;
+            margin-top: 12px;
+        }
+        
+        .recording-indicator .recording-hint {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 8px;
+        }
+        
+        /* Search & Organization Styles */
+        .chat-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .header-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .header-btn:hover {
+            background: var(--tg-theme-button-color, #2481cc);
+            transform: scale(1.1);
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            font-size: 14px;
+        }
+        
+        .search-bar button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: #f44336;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .date-filter {
+            padding: 8px 16px;
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .date-filter select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+        }
+        
+        /* Bookmark Button */
+        .bookmark-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .message:hover .bookmark-btn {
+            opacity: 0.5;
+        }
+        
+        .bookmark-btn:hover {
+            opacity: 1 !important;
+        }
+        
+        .bookmark-btn.bookmarked {
+            opacity: 1;
+            color: #ffd700;
+        }
+        
+        /* Bookmarks Panel */
+        .bookmarks-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .bookmarks-panel.open {
+            right: 0;
+        }
+        
+        .bookmarks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .bookmarks-header h3 {
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .bookmarks-list {
+            padding: 16px;
+        }
+        
+        .bookmark-item {
+            padding: 12px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        
+        .bookmark-item:hover {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+        }
+        
+        .bookmark-text {
+            font-size: 14px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .bookmark-date {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.show {
+            display: block;
+        }
+        
+        /* Highlight search results */
+        .highlight {
+            background: yellow;
+            color: black;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        /* Reminder Categories & Tags */
+        .reminder-categories {
+            margin: 12px 0;
+        }
+        
+        .category-label {
+            display: block;
+            font-size: 13px;
+            color: var(--tg-theme-hint-color, #999);
+            margin-bottom: 8px;
+        }
+        
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .category-tag {
+            padding: 6px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .category-tag:hover {
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+        
+        .category-tag.selected {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+        
+        .reminder-tags-input {
+            margin-top: 12px;
+        }
+        
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .filter-tag {
+            padding: 6px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-tag:hover {
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+        
+        .filter-tag.active {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+        
+        .reminder-category-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-right: 6px;
+        }
+        
+        .category-personal { background: #e3f2fd; color: #1976d2; }
+        .category-work { background: #f3e5f5; color: #7b1fa2; }
+        .category-shopping { background: #e8f5e9; color: #388e3c; }
+        .category-health { background: #fff3e0; color: #f57c00; }
+        .category-important { background: #ffebee; color: #d32f2f; }
+        
+        .reminder-tags-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        
+        .reminder-tag {
+            padding: 2px 6px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-tab {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            color: white;
+        }
+        
+        .admin-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .admin-card .card-title {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        
+        .admin-stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .admin-stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .broadcast-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 12px;
+        }
+        
+        .broadcast-options {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .broadcast-options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .customer-search {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .customer-search input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .customer-search select {
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+        }
+        
+        .customers-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .customer-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .customer-item:hover {
+            background: var(--tg-theme-secondary-bg-color, #e0e0e0);
+        }
+        
+        .customer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 12px;
+        }
+        
+        .customer-info {
+            flex: 1;
+        }
+        
+        .customer-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .customer-id {
+            font-size: 11px;
+            color: var(--tg-theme-hint-color, #999);
+        }
+        
+        .customer-plan {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .customer-plan.basic {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .customer-plan.pro {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .customer-actions {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .customer-action-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .customer-action-btn:hover {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .quick-actions .btn {
+            margin-top: 0;
+            font-size: 14px;
+            padding: 10px;
+        }
+        
+        /* Customer Detail Modal */
+        .customer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .customer-modal.show {
+            display: flex;
+        }
+        
+        .customer-modal-content {
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        
+        .customer-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .customer-modal-header h3 {
+            margin: 0;
+        }
+        
+        .customer-modal-body {
+            padding: 16px;
+        }
+        
+        .customer-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .customer-detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .customer-detail-label {
+            color: var(--tg-theme-hint-color, #999);
+            font-size: 14px;
+        }
+        
+        .customer-detail-value {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .customer-modal-actions {
+            display: flex;
+            gap: 8px;
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .customer-modal-actions .btn {
+            flex: 1;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -689,6 +1422,78 @@
             <button class="tab-btn" onclick="showTab('chat')">Chat</button>
             <button class="tab-btn" onclick="showTab('reminders')">Reminders</button>
             <button class="tab-btn" onclick="showTab('profile')">Profile</button>
+            <button class="tab-btn admin-tab hidden" onclick="showTab('admin')">👑 Admin</button>
+        </div>
+        
+        <!-- Admin Tab -->
+        <div id="admin" class="tab-content hidden">
+            <div class="header">
+                <h1>👑 Admin Panel</h1>
+                <p>System management</p>
+            </div>
+            
+            <!-- System Stats -->
+            <div class="card admin-card">
+                <div class="card-title">📊 System Statistics</div>
+                <div class="admin-stats-grid">
+                    <div class="admin-stat">
+                        <div class="admin-stat-value" id="admin-total-users">0</div>
+                        <div class="admin-stat-label">Total Users</div>
+                    </div>
+                    <div class="admin-stat">
+                        <div class="admin-stat-value" id="admin-active-today">0</div>
+                        <div class="admin-stat-label">Active Today</div>
+                    </div>
+                    <div class="admin-stat">
+                        <div class="admin-stat-value" id="admin-total-messages">0</div>
+                        <div class="admin-stat-label">Total Messages</div>
+                    </div>
+                    <div class="admin-stat">
+                        <div class="admin-stat-value" id="admin-pro-users">0</div>
+                        <div class="admin-stat-label">Pro Users</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Broadcast Message -->
+            <div class="card">
+                <div class="card-title">📢 Broadcast Message</div>
+                <textarea id="broadcast-text" class="broadcast-input" placeholder="Enter message to send to all users..." rows="3"></textarea>
+                <div class="broadcast-options">
+                    <label><input type="checkbox" id="broadcast-to-pro" checked> Pro users only</label>
+                    <label><input type="checkbox" id="broadcast-to-basic" checked> Basic users</label>
+                </div>
+                <button class="btn btn-primary" onclick="sendBroadcast()">Send Broadcast</button>
+            </div>
+            
+            <!-- Customer List -->
+            <div class="card">
+                <div class="card-title">👥 Customer Management</div>
+                <div class="customer-search">
+                    <input type="text" id="customer-search" placeholder="Search customers..." oninput="searchCustomers()">
+                    <select id="customer-filter" onchange="filterCustomers()">
+                        <option value="all">All Users</option>
+                        <option value="basic">Basic Plan</option>
+                        <option value="pro">Pro Plan</option>
+                        <option value="active">Active</option>
+                        <option value="banned">Banned</option>
+                    </select>
+                </div>
+                <div id="customers-list" class="customers-list">
+                    <!-- Customers will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="card">
+                <div class="card-title">⚡ Quick Actions</div>
+                <div class="quick-actions">
+                    <button class="btn btn-secondary" onclick="exportAllData()">📥 Export All Data</button>
+                    <button class="btn btn-secondary" onclick="viewSystemLogs()">📋 View Logs</button>
+                    <button class="btn btn-secondary" onclick="clearCache()">🗑️ Clear Cache</button>
+                    <button class="btn btn-secondary" onclick="restartBot()">🔄 Restart Bot</button>
+                </div>
+            </div>
         </div>
         
         <!-- Dashboard Tab -->
@@ -797,7 +1602,35 @@
                 <div class="card-title">Set New Reminder</div>
                 <input type="text" id="reminder-text" placeholder="What to remind you about?" class="reminder-input">
                 <input type="datetime-local" id="reminder-time" class="reminder-input">
+                
+                <div class="reminder-categories">
+                    <span class="category-label">Category:</span>
+                    <div class="category-tags">
+                        <button class="category-tag" data-category="personal" onclick="selectCategory(this)">👤 Personal</button>
+                        <button class="category-tag" data-category="work" onclick="selectCategory(this)">💼 Work</button>
+                        <button class="category-tag" data-category="shopping" onclick="selectCategory(this)">🛒 Shopping</button>
+                        <button class="category-tag" data-category="health" onclick="selectCategory(this)">💊 Health</button>
+                        <button class="category-tag" data-category="important" onclick="selectCategory(this)">🔴 Important</button>
+                    </div>
+                </div>
+                
+                <div class="reminder-tags-input">
+                    <input type="text" id="reminder-tags" placeholder="Add tags (comma separated)..." class="reminder-input">
+                </div>
+                
                 <button class="btn btn-primary" onclick="addReminder()">Set Reminder</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Filter Reminders</div>
+                <div class="filter-tags" id="filter-tags">
+                    <button class="filter-tag active" onclick="filterReminders('all')">All</button>
+                    <button class="filter-tag" onclick="filterReminders('personal')">👤 Personal</button>
+                    <button class="filter-tag" onclick="filterReminders('work')">💼 Work</button>
+                    <button class="filter-tag" onclick="filterReminders('shopping')">🛒 Shopping</button>
+                    <button class="filter-tag" onclick="filterReminders('health')">💊 Health</button>
+                    <button class="filter-tag" onclick="filterReminders('important')">🔴 Important</button>
+                </div>
             </div>
             
             <div class="card">
@@ -833,9 +1666,25 @@
                 </div>
                 
                 <div class="setting-item">
-                    <span class="setting-label">🔔 Notifications</span>
+                    <span class="setting-label">🔔 Push Notifications</span>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="notifications-toggle" checked>
+                        <input type="checkbox" id="notifications-toggle" onchange="toggleNotifications()">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">🔊 Sound Alerts</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="sound-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">📳 Vibration</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="vibration-toggle" checked>
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -850,6 +1699,36 @@
             </div>
             
             <div class="card">
+                <div class="card-title">Notification Settings</div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">💬 New Messages</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notify-messages" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">⏰ Reminder Alerts</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notify-reminders" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <span class="setting-label">📢 Admin Broadcasts</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notify-broadcasts" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <button class="btn btn-secondary" onclick="testNotification()">🧪 Test Notification</button>
+            </div>
+            
+            <div class="card">
                 <div class="card-title">Account</div>
                 <button class="btn btn-secondary" onclick="exportData()">📥 Export Data</button>
                 <button class="btn btn-secondary" onclick="contactSupport()">💬 Contact Support</button>
@@ -861,7 +1740,27 @@
             <div class="chat-container">
                 <div class="chat-header">
                     <h2>💬 Chat</h2>
-                    <span id="chat-status" class="status-online">Online</span>
+                    <div class="chat-actions">
+                        <button class="header-btn" onclick="toggleSearch()" title="Search">🔍</button>
+                        <button class="header-btn" onclick="toggleBookmarks()" title="Bookmarks">⭐</button>
+                        <span id="chat-status" class="status-online">Online</span>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div id="search-bar" class="search-bar hidden">
+                    <input type="text" id="search-input" placeholder="Search messages..." oninput="searchMessages()">
+                    <button onclick="clearSearch()">✕</button>
+                </div>
+                
+                <!-- Date Filter -->
+                <div id="date-filter" class="date-filter">
+                    <select id="date-range" onchange="filterByDate()">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
                 </div>
                 
                 <div id="chat-messages" class="chat-messages">
@@ -871,11 +1770,48 @@
                     </div>
                 </div>
                 
+                <!-- Bookmarks Panel -->
+                <div id="bookmarks-panel" class="bookmarks-panel">
+                    <div class="bookmarks-header">
+                        <h3>⭐ Bookmarks</h3>
+                        <button class="close-btn" onclick="toggleBookmarks()">✕</button>
+                    </div>
+                    <div id="bookmarks-list" class="bookmarks-list">
+                        <p class="empty-state">No bookmarks yet</p>
+                    </div>
+                </div>
+                <div id="overlay" class="overlay" onclick="toggleBookmarks()"></div>
+                
                 <div class="chat-input-area">
+                    <div class="chat-toolbar">
+                        <button class="toolbar-btn" onclick="toggleEmojiPicker()" title="Emoji">😀</button>
+                        <button class="toolbar-btn" onclick="document.getElementById('image-input').click()" title="Image">📷</button>
+                        <button class="toolbar-btn" onclick="document.getElementById('file-input').click()" title="File">📎</button>
+                        <button class="toolbar-btn" id="voice-btn" onmousedown="startRecording()" onmouseup="stopRecording()" ontouchstart="startRecording()" ontouchend="stopRecording()" title="Voice">🎙️</button>
+                    </div>
+                    
+                    <!-- Emoji Picker -->
+                    <div id="emoji-picker" class="emoji-picker hidden">
+                        <div class="emoji-categories">
+                            <button onclick="showEmojiCategory('smileys')">😀</button>
+                            <button onclick="showEmojiCategory('animals')">🐱</button>
+                            <button onclick="showEmojiCategory('food')">🍎</button>
+                            <button onclick="showEmojiCategory('activities')">⚽</button>
+                            <button onclick="showEmojiCategory('travel')">🚗</button>
+                            <button onclick="showEmojiCategory('objects')">💡</button>
+                            <button onclick="showEmojiCategory('symbols')">❤️</button>
+                        </div>
+                        <div id="emoji-grid" class="emoji-grid"></div>
+                    </div>
+                    
                     <div class="chat-input-box">
                         <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
                         <button id="send-btn" onclick="sendMessage()">➤</button>
                     </div>
+                    
+                    <!-- Hidden file inputs -->
+                    <input type="file" id="image-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                    <input type="file" id="file-input" class="hidden" onchange="handleFileUpload(event)">
                 </div>
             </div>
         </div>
@@ -1174,6 +2110,8 @@
         
         // Reminders
         let reminders = [];
+        let selectedCategory = '';
+        let currentFilter = 'all';
         
         function loadReminders() {
             const saved = localStorage.getItem('reminders');
@@ -1187,16 +2125,36 @@
             localStorage.setItem('reminders', JSON.stringify(reminders));
         }
         
+        function selectCategory(btn) {
+            // Remove selected from all
+            document.querySelectorAll('.category-tag').forEach(tag => {
+                tag.classList.remove('selected');
+            });
+            
+            // Toggle selection
+            if (selectedCategory === btn.dataset.category) {
+                selectedCategory = '';
+            } else {
+                selectedCategory = btn.dataset.category;
+                btn.classList.add('selected');
+            }
+        }
+        
         function addReminder() {
             const text = document.getElementById('reminder-text').value.trim();
             const time = document.getElementById('reminder-time').value;
+            const tagsInput = document.getElementById('reminder-tags').value.trim();
             
             if (!text || !time) return;
+            
+            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : [];
             
             reminders.push({
                 id: Date.now(),
                 text: text,
                 time: time,
+                category: selectedCategory || 'personal',
+                tags: tags,
                 completed: false
             });
             
@@ -1205,6 +2163,23 @@
             
             // Clear inputs
             document.getElementById('reminder-text').value = '';
+            document.getElementById('reminder-tags').value = '';
+            selectedCategory = '';
+            document.querySelectorAll('.category-tag').forEach(tag => {
+                tag.classList.remove('selected');
+            });
+        }
+        
+        function filterReminders(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.filter-tag').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderReminders();
         }
         
         function toggleReminder(id) {
@@ -1225,23 +2200,46 @@
         function renderReminders() {
             const list = document.getElementById('reminders-list');
             
-            if (reminders.length === 0) {
+            // Filter reminders
+            let filtered = reminders;
+            if (currentFilter !== 'all') {
+                filtered = reminders.filter(r => r.category === currentFilter);
+            }
+            
+            if (filtered.length === 0) {
                 list.innerHTML = '<p class="empty-state">No reminders set yet</p>';
                 return;
             }
             
-            list.innerHTML = reminders.map(r => `
+            list.innerHTML = filtered.map(r => {
+                const categoryLabels = {
+                    personal: '👤 Personal',
+                    work: '💼 Work',
+                    shopping: '🛒 Shopping',
+                    health: '💊 Health',
+                    important: '🔴 Important'
+                };
+                
+                const tagsHtml = r.tags && r.tags.length 
+                    ? `<div class="reminder-tags-display">${r.tags.map(t => `<span class="reminder-tag">#${escapeHtml(t)}</span>`).join('')}</div>` 
+                    : '';
+                
+                return `
                 <div class="reminder-item">
                     <input type="checkbox" class="reminder-checkbox" 
                         ${r.completed ? 'checked' : ''} 
                         onchange="toggleReminder(${r.id})">
                     <div class="reminder-content">
-                        <div class="reminder-text" style="${r.completed ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${escapeHtml(r.text)}</div>
+                        <div class="reminder-text" style="${r.completed ? 'text-decoration: line-through; opacity: 0.6;' : ''}">
+                            <span class="reminder-category-badge category-${r.category}">${categoryLabels[r.category] || r.category}</span>
+                            ${escapeHtml(r.text)}
+                        </div>
                         <div class="reminder-time">${new Date(r.time).toLocaleString()}</div>
+                        ${tagsHtml}
                     </div>
                     <button class="reminder-delete" onclick="deleteReminder(${r.id})">🗑️</button>
                 </div>
-            `).join('');
+            `}).join('');
         }
         
         // Dark mode
@@ -1290,6 +2288,740 @@
                 document.getElementById('profile-avatar').innerHTML = '<img src="' + user.photo_url + '" style="width: 80px; height: 80px; border-radius: 50%;">';
             }
         }
+        
+        // ==================== MEDIA FEATURES ====================
+        
+        // Emoji Picker
+        const emojis = {
+            smileys: ['😀','😃','😄','😁','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🥸','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺','🤡','💩','👻','💀','☠️','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾'],
+            animals: ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐯','🦁','🐮','🐷','🐽','🐸','🐵','🙈','🙉','🙊','🐒','🐔','🐧','🐦','🐤','🐣','🐥','🦆','🦅','🦉','🦇','🐺','🐗','🐴','🦄','🐝','🐛','🦋','🐌','🐞','🐜','🦗','🕷️','🕸️','🦂','🐢','🐍','🦎','🦖','🦕','🐙','🦑','🦐','🦞','🦀','🐡','🐠','🐟','🐬','🐳','🐋','🦈','🐊','🐅','🐆','🦓','🦍','🦧','🐘','🦛','🦏','🐪','🐫','🦒','🦘','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🦙','🐐','🦌','🐕','🐩','🦮','🐕‍🦺','🐈','🐈‍⬛','🐓','🦃','🦚','🦜','🦢','🦩','🕊️','🐇','🦝','🦨','🦡','🦦','🦥','🐁','🐀','🐿️','🦔'],
+            food: ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥝','🍅','🍆','🥑','🥦','🥬','🥒','🌶️','🌽','🥕','🧄','🧅','🥔','🍠','🥐','🥯','🍞','🥖','🥨','🧀','🥚','🍳','🧈','🥞','🧇','🥓','🥩','🍗','🍖','🦴','🌭','🍔','🍟','🍕','🥪','🥙','🧆','🌮','🌯','🥗','🥘','🍝','🍜','🍲','🍛','🍣','🍱','🥟','🦪','🍤','🍙','🍚','🍘','🍥','🥠','🥮','🍢','🍡','🍧','🍨','🍦','🥧','🧁','🍰','🎂','🍮','🍭','🍬','🍫','🍿','🍩','🍪','🌰','🥜','🍯','🥛','🍼','☕','🍵','🧃','🥤','🍶','🍺','🍻','🥂','🍷','🥃','🍸','🍹','🧉','🍾','🧊'],
+            activities: ['⚽','🏀','🏈','⚾','🥎','🎾','🏐','🏉','🥏','🎱','🪀','🏓','🏸','🏒','🏑','🥍','🏏','🥅','⛳','🪁','🏹','🎣','🤿','🥊','🥋','🎽','🛹','🛼','🛷','⛸️','🥌','🎿','⛷️','🏂','🏋️','🤼','🤽','🤾','🌊','🏄','🏊','🤽‍♂️','🚣','🧗','🚵','🚴','🏆','🥇','🥈','🥉','🏅','🎖️','🏵️','🎗️','🎫','🎟️','🎪','🤹','🎭','🩰','🎨','🎬','🎤','🎧','🎼','🎹','🥁','🎷','🎺','🎸','🪕','🎻','🎲','♟️','🎯','🎳','🎮','🎰','🧩'],
+            travel: ['🚗','🚕','🚙','🚌','🚎','🏎️','🚓','🚑','🚒','🚐','🚚','🚛','🚜','🦯','🦽','🦼','🛴','🚲','🛵','🏍️','🛺','🚨','🚔','🚍','🚘','🚖','🚡','🚠','🚟','🚃','🚋','🚞','🚝','🚄','🚅','🚈','🚂','🚆','🚇','🚊','🚉','✈️','🛫','🛬','🛩️','💺','🛰️','🚀','🛸','🚁','🛶','⛵','🚤','🛥️','🛳️','⛴️','🚢','⚓','⛽','🚧','🚦','🚥','🚏','🗺️','🗿','🗽','🗼','🏰','🏯','🏟️','🎡','🎢','🎠','⛲','⛱️','🏖️','🏝️','🏜️','🌋','⛰️','🏔️','🗻','🏕️','⛺','🏠','🏡','🏘️','🏚️','🏗️','🏭','🏢','🏬','🏣','🏤','🏥','🏦','🏨','🏪','🏫','🏩','💒','🏛️','⛪','🕌','🕍','🛕','🕋','⛩️','🛤️','🛣️','🗾','🎑','🏞️','🌅','🌄','🌠','🎇','🎆','🌇','🌆','🏙️','🌃','🌌','🌉','🌁'],
+            objects: ['⌚','⏰','⏱️','⏲️','🕰️','🕛','🕧','🕐','🕜','🕑','🕝','🕒','🕞','🕓','🕟','🕔','🕠','🕕','🕡','🕖','🕢','🕗','🕣','🕘','🕤','🕙','🕥','🕚','🕦','🌑','🌒','🌓','🌔','🌕','🌖','🌗','🌘','🌙','🌚','🌛','🌜','🌡️','☀️','🌝','🌞','⭐','🌟','🌠','☁️','⛅','⛈️','🌤️','🌥️','🌦️','🌧️','🌨️','❄️','🌬️','💨','🌪️','🌫️','🌈','☂️','☔','💧','💦','☃️','⛄','❄️','🌊','💎','💍','💰','💴','💵','💶','💷','💸','💳','🧾','💹','✉️','📧','📨','📩','📤','📥','📦','📫','📪','📬','📭','📮','🗳️','✏️','✒️','🖋️','🖊️','🖌️','🖍️','📝','💼','📁','📂','🗂️','📅','📆','🗒️','🗓️','📇','📈','📉','📊','📋','📌','📍','📎','🖇️','📏','📐','✂️','🗃️','🗄️','🗑️','🔒','🔓','🔏','🔐','🔑','🗝️','🔨','🪓','⛏️','⚒️','🛠️','🗡️','⚔️','🔫','🏹','🛡️','🔧','🔩','⚙️','🗜️','⚖️','🦯','🔗','⛓️','🪝','🧰','🧲','🧪','🧫','🧬','🔬','🔭','📡','💉','🩸','💊','🩹','🩺','🌡️','🚽','🚰','🚿','🛁','🛀','🧴','🧷','🧹','🧺','🧻','🧼','🧽','🛎️','🔑','🚪','🪑','🛋️','🛏️','🛌','🧸','🖼️','🪞','🪟','🛍️','🛒','🎁','🎈','🎏','🎀','🎊','🎉','🎎','🏮','🎐','🧧','✉️','📩','📨','📧','💌','📥','📤','📦','🏷️','📪','📫','📬','📭','📮','📯','📜','📃','📄','📑','🧾','📊','📈','📉','🗒️','🗓️','📆','📅','🗑️','📇','🗃️','🗳️','🗄️','📋','📁','📂','🗂️','🗞️','📰','📓','📔','📒','📕','📗','📘','📙','📚','📖','🔖','🧷','🔗','📎','🖇️','📐','📏','🧮','📌','📍','✂️','🖊️','🖋️','✒️','🖌️','🖍️','📝','✏️','🔍','🔎','🔏','🔐','🔒','🔓'],
+            symbols: ['❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','💟','☮️','✝️','☪️','🕉️','☸️','✡️','🔯','🕎','☯️','☦️','🛐','⛎','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','🆔','⚛️','🉑','☢️','☣️','📴','📳','🈶','🈚','🈸','🈺','🈷️','✴️','🆚','💮','🉐','㊙️','㊗️','🈴','🈵','🈹','🈲','🅰️','🅱️','🆎','🆑','🅾️','🆘','❌','⭕','🛑','⛔','📛','🚫','💯','💢','♨️','🚷','🚯','🚳','🚱','🔞','📵','🚭','❗','❕','❓','❔','‼️','⁉️','🔅','🔆','〽️','⚠️','🚸','🔱','⚜️','🔰','♻️','✅','🈯','💹','❇️','✳️','❎','🌐','💠','Ⓜ️','🌀','💤','🏧','🚾','♿','🅿️','🈳','🈂','🛂','🛃','🛄','🛅','🛗','🚹','🚺','🚼','🚻','🚮','🎦','📶','🈁','🔣','ℹ️','🔤','🔡','🔠','🆖','🆗','🆙','🆒','🆕','🆓','0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟','🔢','#️⃣','*️⃣','⏏️','▶️','⏸️','⏯️','⏹️','⏺️','⏭️','⏮️','⏩','⏪','⏫','⏬','◀️','🔼','🔽','➡️','⬅️','⬆️','⬇️','↗️','↘️','↙️','↖️','↕️','↔️','↪️','↩️','⤴️','⤵️','🔀','🔁','🔂','🔄','🔃','🎵','🎶','➕','➖','➗','✖️','💲','💱','™️','©️','®️','〰️','➰','➿','🔚','🔙','🔛','🔝','🔜','✔️','☑️','🔘','⚪','⚫','🔴','🔵','🔺','🔻','🔸','🔹','🔶','🔷','🔳','🔲','▪️','▫️','◾','◽','◼️','◻️','⬛','⬜','🔈','🔇','🔉','🔊','🔔','🔕','📣','📢','💬','💭','🗯️','♠️','♣️','♥️','♦️','🃏','🎴','🀄','🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚','🕛','🕜','🕝','🕞','🕟','🕠','🕡','🕢','🕣','🕤','🕥','🕦','🕧']
+        };
+        
+        let currentEmojiCategory = 'smileys';
+        let isRecording = false;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordingStartTime = null;
+        let recordingTimer = null;
+        
+        function toggleEmojiPicker() {
+            const picker = document.getElementById('emoji-picker');
+            picker.classList.toggle('hidden');
+            if (!picker.classList.contains('hidden')) {
+                showEmojiCategory('smileys');
+            }
+        }
+        
+        function showEmojiCategory(category) {
+            currentEmojiCategory = category;
+            const grid = document.getElementById('emoji-grid');
+            grid.innerHTML = emojis[category].map(emoji => 
+                `<button class="emoji-item" onclick="insertEmoji('${emoji}')">${emoji}</button>`
+            ).join('');
+        }
+        
+        function insertEmoji(emoji) {
+            const input = document.getElementById('message-input');
+            input.value += emoji;
+            input.focus();
+        }
+        
+        // Image Upload
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                addImageMessage(e.target.result, 'user');
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    addMessage('Nice image! 📸 I can see it clearly.', 'bot');
+                }, 1000);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function addImageMessage(imageData, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageDiv.innerHTML = `
+                <img src="${imageData}" class="message-image" onclick="viewImage('${imageData}')">
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        function viewImage(imageData) {
+            tg.showPopup({
+                title: 'Image',
+                message: 'Image viewer would open here'
+            });
+        }
+        
+        // File Upload
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const size = formatFileSize(file.size);
+            addFileMessage(file.name, size, 'user');
+            
+            // Simulate bot response
+            setTimeout(() => {
+                addMessage(`Received file: ${file.name} (${size})`, 'bot');
+            }, 1000);
+        }
+        
+        function addFileMessage(fileName, fileSize, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const icon = getFileIcon(fileName);
+            
+            messageDiv.innerHTML = `
+                <div class="message-file">
+                    <span class="message-file-icon">${icon}</span>
+                    <div class="message-file-info">
+                        <div class="message-file-name">${escapeHtml(fileName)}</div>
+                        <div class="message-file-size">${fileSize}</div>
+                    </div>
+                </div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        function getFileIcon(fileName) {
+            const ext = fileName.split('.').pop().toLowerCase();
+            const icons = {
+                pdf: '📄',
+                doc: '📝',
+                docx: '📝',
+                xls: '📊',
+                xlsx: '📊',
+                ppt: '📊',
+                pptx: '📊',
+                zip: '📦',
+                rar: '📦',
+                mp3: '🎵',
+                mp4: '🎬',
+                jpg: '🖼️',
+                jpeg: '🖼️',
+                png: '🖼️',
+                gif: '🖼️'
+            };
+            return icons[ext] || '📎';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Voice Recording
+        async function startRecording() {
+            if (isRecording) return;
+            
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+                
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const duration = Math.floor((Date.now() - recordingStartTime) / 1000);
+                    addVoiceMessage(audioUrl, duration, 'user');
+                    
+                    // Simulate bot response
+                    setTimeout(() => {
+                        addMessage('🎙️ Voice message received! (Transcription would appear here)', 'bot');
+                    }, 1000);
+                };
+                
+                mediaRecorder.start();
+                isRecording = true;
+                recordingStartTime = Date.now();
+                
+                // Update UI
+                document.getElementById('voice-btn').classList.add('recording');
+                showRecordingIndicator();
+                
+            } catch (err) {
+                console.error('Error accessing microphone:', err);
+                tg.showPopup({
+                    title: 'Microphone Error',
+                    message: 'Could not access microphone. Please check permissions.'
+                });
+            }
+        }
+        
+        function stopRecording() {
+            if (!isRecording || !mediaRecorder) return;
+            
+            mediaRecorder.stop();
+            mediaRecorder.stream.getTracks().forEach(track => track.stop());
+            
+            isRecording = false;
+            document.getElementById('voice-btn').classList.remove('recording');
+            hideRecordingIndicator();
+        }
+        
+        function showRecordingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'recording-indicator';
+            indicator.className = 'recording-indicator';
+            indicator.innerHTML = `
+                <div class="mic-icon">🎙️</div>
+                <div class="recording-time" id="recording-time">0:00</div>
+                <div class="recording-hint">Release to send</div>
+            `;
+            document.body.appendChild(indicator);
+            
+            // Update timer
+            recordingTimer = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - recordingStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('recording-time').textContent = 
+                    `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        
+        function hideRecordingIndicator() {
+            const indicator = document.getElementById('recording-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+            clearInterval(recordingTimer);
+        }
+        
+        function addVoiceMessage(audioUrl, duration, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const durationStr = `${Math.floor(duration / 60)}:${(duration % 60).toString().padStart(2, '0')}`;
+            
+            // Generate random waveform bars
+            let waveform = '';
+            for (let i = 0; i < 20; i++) {
+                const height = Math.floor(Math.random() * 16) + 4;
+                waveform += `<div class="voice-bar" style="height: ${height}px"></div>`;
+            }
+            
+            messageDiv.innerHTML = `
+                <div class="voice-message">
+                    <button class="voice-play-btn" onclick="playVoiceMessage('${audioUrl}', this)">▶️</button>
+                    <div class="voice-waveform">${waveform}</div>
+                    <span class="voice-duration">${durationStr}</span>
+                </div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        let currentAudio = null;
+        
+        function playVoiceMessage(audioUrl, btn) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+                btn.textContent = '▶️';
+                return;
+            }
+            
+            currentAudio = new Audio(audioUrl);
+            currentAudio.play();
+            btn.textContent = '⏸️';
+            
+            currentAudio.onended = () => {
+                btn.textContent = '▶️';
+                currentAudio = null;
+            };
+        }
+        
+        // Close emoji picker when clicking outside
+        document.addEventListener('click', function(e) {
+            const picker = document.getElementById('emoji-picker');
+            const toolbarBtn = e.target.closest('.toolbar-btn');
+            if (picker && !picker.contains(e.target) && !toolbarBtn) {
+                picker.classList.add('hidden');
+            }
+        });
+        
+        // ==================== SEARCH & ORGANIZATION ====================
+        
+        let bookmarks = JSON.parse(localStorage.getItem('chat_bookmarks') || '[]');
+        let allMessages = []; // Store all messages for search
+        
+        function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+        
+        function searchMessages() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const messages = document.querySelectorAll('.message');
+            
+            messages.forEach(msg => {
+                const content = msg.querySelector('.message-content');
+                if (!content) return;
+                
+                const text = content.textContent.toLowerCase();
+                
+                if (query === '') {
+                    msg.style.display = '';
+                    content.innerHTML = content.textContent; // Remove highlights
+                } else if (text.includes(query)) {
+                    msg.style.display = '';
+                    // Highlight matching text
+                    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+                    content.innerHTML = content.textContent.replace(regex, '<span class="highlight">$1</span>');
+                } else {
+                    msg.style.display = 'none';
+                }
+            });
+        }
+        
+        function clearSearch() {
+            document.getElementById('search-input').value = '';
+            searchMessages();
+            document.getElementById('search-bar').classList.add('hidden');
+        }
+        
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+        
+        function filterByDate() {
+            const range = document.getElementById('date-range').value;
+            const messages = document.querySelectorAll('.message');
+            const now = new Date();
+            
+            messages.forEach(msg => {
+                const timeEl = msg.querySelector('.message-time');
+                if (!timeEl || timeEl.textContent === 'Now') {
+                    msg.style.display = '';
+                    return;
+                }
+                
+                // For demo, show all messages
+                // In real app, parse message timestamps and filter
+                if (range === 'all') {
+                    msg.style.display = '';
+                } else {
+                    // Simplified filtering - in real app, compare actual dates
+                    msg.style.display = '';
+                }
+            });
+        }
+        
+        // Bookmarks
+        function toggleBookmarks() {
+            const panel = document.getElementById('bookmarks-panel');
+            const overlay = document.getElementById('overlay');
+            
+            panel.classList.toggle('open');
+            overlay.classList.toggle('show');
+            
+            if (panel.classList.contains('open')) {
+                renderBookmarks();
+            }
+        }
+        
+        function addBookmark(messageId, text, time) {
+            const existing = bookmarks.find(b => b.id === messageId);
+            if (existing) {
+                // Remove if already bookmarked
+                bookmarks = bookmarks.filter(b => b.id !== messageId);
+            } else {
+                // Add new bookmark
+                bookmarks.push({
+                    id: messageId,
+                    text: text,
+                    time: time,
+                    timestamp: Date.now()
+                });
+            }
+            
+            localStorage.setItem('chat_bookmarks', JSON.stringify(bookmarks));
+            updateBookmarkButtons();
+        }
+        
+        function renderBookmarks() {
+            const list = document.getElementById('bookmarks-list');
+            
+            if (bookmarks.length === 0) {
+                list.innerHTML = '<p class="empty-state">No bookmarks yet</p>';
+                return;
+            }
+            
+            list.innerHTML = bookmarks.map(b => `
+                <div class="bookmark-item" onclick="scrollToMessage('${b.id}')">
+                    <div class="bookmark-text">${escapeHtml(b.text)}</div>
+                    <div class="bookmark-date">${b.time}</div>
+                </div>
+            `).join('');
+        }
+        
+        function scrollToMessage(messageId) {
+            toggleBookmarks();
+            const msg = document.querySelector(`[data-message-id="${messageId}"]`);
+            if (msg) {
+                msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                msg.style.animation = 'pulse 1s';
+                setTimeout(() => msg.style.animation = '', 1000);
+            }
+        }
+        
+        function updateBookmarkButtons() {
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const messageId = btn.dataset.messageId;
+                const isBookmarked = bookmarks.some(b => b.id === messageId);
+                btn.classList.toggle('bookmarked', isBookmarked);
+                btn.textContent = isBookmarked ? '⭐' : '☆';
+            });
+        }
+        
+        // Modify addMessage to include bookmark button
+        const originalAddMessage = addMessage;
+        addMessage = function(text, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            const messageDiv = document.createElement('div');
+            const messageId = 'msg_' + Date.now();
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.dataset.messageId = messageId;
+            
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageDiv.innerHTML = `
+                <button class="bookmark-btn" data-message-id="${messageId}" onclick="addBookmark('${messageId}', '${escapeHtml(text)}', '${time}')">☆</button>
+                <div class="message-content">${escapeHtml(text)}</div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Store for search
+            allMessages.push({ id: messageId, text: text, time: time, sender: sender });
+        };
+        
+        // ==================== ADMIN PANEL ====================
+        
+        const ADMIN_CHAT_ID = '7558112301'; // Your chat ID
+        let customers = [];
+        let selectedCustomer = null;
+        
+        // Check if current user is admin
+        function checkAdminAccess() {
+            if (user && user.id.toString() === ADMIN_CHAT_ID) {
+                document.querySelector('.admin-tab').classList.remove('hidden');
+                loadAdminData();
+            }
+        }
+        
+        function loadAdminData() {
+            // Mock data - replace with actual API call
+            customers = [
+                { id: '123456', name: 'John Doe', username: 'johndoe', plan: 'pro', status: 'active', messages: 156, lastActive: '2026-03-14 10:30' },
+                { id: '234567', name: 'Jane Smith', username: 'janesmith', plan: 'basic', status: 'active', messages: 45, lastActive: '2026-03-14 09:15' },
+                { id: '345678', name: 'Bob Wilson', username: 'bobwilson', plan: 'basic', status: 'banned', messages: 12, lastActive: '2026-03-13 15:20' },
+                { id: '456789', name: 'Alice Brown', username: 'aliceb', plan: 'pro', status: 'active', messages: 234, lastActive: '2026-03-14 11:00' },
+                { id: '567890', name: 'Charlie Davis', username: 'charlied', plan: 'basic', status: 'active', messages: 78, lastActive: '2026-03-14 08:45' }
+            ];
+            
+            updateAdminStats();
+            renderCustomers();
+        }
+        
+        function updateAdminStats() {
+            const totalUsers = customers.length;
+            const activeToday = customers.filter(c => c.lastActive.startsWith('2026-03-14')).length;
+            const totalMessages = customers.reduce((sum, c) => sum + c.messages, 0);
+            const proUsers = customers.filter(c => c.plan === 'pro').length;
+            
+            document.getElementById('admin-total-users').textContent = totalUsers;
+            document.getElementById('admin-active-today').textContent = activeToday;
+            document.getElementById('admin-total-messages').textContent = totalMessages;
+            document.getElementById('admin-pro-users').textContent = proUsers;
+        }
+        
+        function renderCustomers(filter = 'all', search = '') {
+            const list = document.getElementById('customers-list');
+            
+            let filtered = customers;
+            
+            // Apply filter
+            if (filter !== 'all') {
+                if (filter === 'active' || filter === 'banned') {
+                    filtered = customers.filter(c => c.status === filter);
+                } else {
+                    filtered = customers.filter(c => c.plan === filter);
+                }
+            }
+            
+            // Apply search
+            if (search) {
+                const searchLower = search.toLowerCase();
+                filtered = filtered.filter(c => 
+                    c.name.toLowerCase().includes(searchLower) ||
+                    c.username.toLowerCase().includes(searchLower) ||
+                    c.id.includes(search)
+                );
+            }
+            
+            if (filtered.length === 0) {
+                list.innerHTML = '<p class="empty-state">No customers found</p>';
+                return;
+            }
+            
+            list.innerHTML = filtered.map(c => `
+                <div class="customer-item" onclick="showCustomerDetail('${c.id}')">
+                    <div class="customer-avatar">${c.name.charAt(0).toUpperCase()}</div>
+                    <div class="customer-info">
+                        <div class="customer-name">${escapeHtml(c.name)}</div>
+                        <div class="customer-id">@${escapeHtml(c.username)} • ${c.messages} msgs</div>
+                    </div>
+                    <span class="customer-plan ${c.plan}">${c.plan.toUpperCase()}</span>
+                    <div class="customer-actions" onclick="event.stopPropagation()">
+                        <button class="customer-action-btn" onclick="upgradeCustomer('${c.id}')" title="Upgrade">⬆️</button>
+                        <button class="customer-action-btn" onclick="toggleBanCustomer('${c.id}')" title="${c.status === 'banned' ? 'Unban' : 'Ban'}">${c.status === 'banned' ? '🔓' : '🔒'}</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function searchCustomers() {
+            const search = document.getElementById('customer-search').value;
+            const filter = document.getElementById('customer-filter').value;
+            renderCustomers(filter, search);
+        }
+        
+        function filterCustomers() {
+            const filter = document.getElementById('customer-filter').value;
+            const search = document.getElementById('customer-search').value;
+            renderCustomers(filter, search);
+        }
+        
+        function showCustomerDetail(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+            
+            selectedCustomer = customer;
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.id = 'customer-modal';
+            modal.className = 'customer-modal show';
+            modal.innerHTML = `
+                <div class="customer-modal-content">
+                    <div class="customer-modal-header">
+                        <h3>👤 Customer Details</h3>
+                        <button class="close-btn" onclick="closeCustomerModal()">✕</button>
+                    </div>
+                    <div class="customer-modal-body">
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Name</span>
+                            <span class="customer-detail-value">${escapeHtml(customer.name)}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Username</span>
+                            <span class="customer-detail-value">@${escapeHtml(customer.username)}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">ID</span>
+                            <span class="customer-detail-value">${customer.id}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Plan</span>
+                            <span class="customer-detail-value">${customer.plan.toUpperCase()}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Status</span>
+                            <span class="customer-detail-value">${customer.status.toUpperCase()}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Total Messages</span>
+                            <span class="customer-detail-value">${customer.messages}</span>
+                        </div>
+                        <div class="customer-detail-row">
+                            <span class="customer-detail-label">Last Active</span>
+                            <span class="customer-detail-value">${customer.lastActive}</span>
+                        </div>
+                    </div>
+                    <div class="customer-modal-actions">
+                        <button class="btn btn-primary" onclick="upgradeCustomer('${customer.id}')">${customer.plan === 'pro' ? 'Downgrade' : 'Upgrade'}</button>
+                        <button class="btn btn-secondary" onclick="toggleBanCustomer('${customer.id}')">${customer.status === 'banned' ? 'Unban' : 'Ban'}</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        function closeCustomerModal() {
+            const modal = document.getElementById('customer-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function upgradeCustomer(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+            
+            customer.plan = customer.plan === 'pro' ? 'basic' : 'pro';
+            
+            tg.showPopup({
+                title: 'Plan Updated',
+                message: `${customer.name} is now on ${customer.plan.toUpperCase()} plan`
+            });
+            
+            updateAdminStats();
+            renderCustomers();
+            closeCustomerModal();
+        }
+        
+        function toggleBanCustomer(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+            
+            customer.status = customer.status === 'banned' ? 'active' : 'banned';
+            
+            tg.showPopup({
+                title: 'Status Updated',
+                message: `${customer.name} is now ${customer.status.toUpperCase()}`
+            });
+            
+            renderCustomers();
+            closeCustomerModal();
+        }
+        
+        function sendBroadcast() {
+            const text = document.getElementById('broadcast-text').value.trim();
+            const toPro = document.getElementById('broadcast-to-pro').checked;
+            const toBasic = document.getElementById('broadcast-to-basic').checked;
+            
+            if (!text) {
+                tg.showPopup({
+                    title: 'Error',
+                    message: 'Please enter a message'
+                });
+                return;
+            }
+            
+            if (!toPro && !toBasic) {
+                tg.showPopup({
+                    title: 'Error',
+                    message: 'Please select at least one user group'
+                });
+                return;
+            }
+            
+            // Count recipients
+            let recipientCount = 0;
+            if (toPro) recipientCount += customers.filter(c => c.plan === 'pro').length;
+            if (toBasic) recipientCount += customers.filter(c => c.plan === 'basic').length;
+            
+            tg.showPopup({
+                title: 'Broadcast Sent',
+                message: `Message sent to ${recipientCount} users!`
+            });
+            
+            document.getElementById('broadcast-text').value = '';
+        }
+        
+        function exportAllData() {
+            const data = {
+                customers: customers,
+                exportDate: new Date().toISOString(),
+                totalMessages: customers.reduce((sum, c) => sum + c.messages, 0)
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'veditzzz-admin-data.json';
+            a.click();
+            
+            tg.showPopup({
+                title: 'Data Exported',
+                message: 'All data has been downloaded!'
+            });
+        }
+        
+        function viewSystemLogs() {
+            tg.showPopup({
+                title: 'System Logs',
+                message: 'Logs would be displayed here in a real implementation'
+            });
+        }
+        
+        function clearCache() {
+            localStorage.clear();
+            tg.showPopup({
+                title: 'Cache Cleared',
+                message: 'Local cache has been cleared!'
+            });
+        }
+        
+        function restartBot() {
+            tg.showPopup({
+                title: 'Restart Bot',
+                message: 'Are you sure you want to restart the bot?',
+                buttons: [
+                    {id: 'restart', type: 'destructive', text: 'Restart'},
+                    {type: 'cancel'}
+                ]
+            }, function(btnId) {
+                if (btnId === 'restart') {
+                    tg.showPopup({
+                        title: 'Restarting',
+                        message: 'Bot is restarting...'
+                    });
+                }
+            });
+        }
+        
+        // Check admin access on load
+        checkAdminAccess();
     </script>
 </body>
 </html>
