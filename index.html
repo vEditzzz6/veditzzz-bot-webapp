@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vEditzzz AI Bot</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            color: var(--tg-theme-text-color, #000);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: var(--tg-theme-hint-color, #999);
+            font-size: 14px;
+        }
+        
+        .card {
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 14px;
+            color: var(--tg-theme-hint-color, #999);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .plan-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .plan-basic {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .plan-pro {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+        
+        .stat-label {
+            color: var(--tg-theme-hint-color, #999);
+        }
+        
+        .stat-value {
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: opacity 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #fff);
+        }
+        
+        .btn-secondary {
+            background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+            color: var(--tg-theme-text-color, #000);
+        }
+        
+        .btn:active {
+            opacity: 0.8;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .feature-locked::before {
+            content: "✗";
+            color: #f44336;
+        }
+        
+        .chat-input {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: var(--tg-theme-bg-color, #f5f5f5);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 24px;
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            font-size: 16px;
+        }
+        
+        .chat-input button {
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: var(--tg-theme-button-color, #2481cc);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .tab-nav {
+            display: flex;
+            background: var(--tg-theme-secondary-bg-color, #fff);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #fff);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard</button>
+            <button class="tab-btn" onclick="showTab('chat')">Chat</button>
+        </div>
+        
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content">
+            <div class="header">
+                <h1>👋 Welcome, <span id="user-name">User</span>!</h1>
+                <p>Your AI Assistant Dashboard</p>
+            </div>
+            
+            <!-- Plan Info -->
+            <div class="card">
+                <div class="card-title">Current Plan</div>
+                <span id="plan-badge" class="plan-badge plan-basic">BASIC</span>
+                <div class="stat-row" style="margin-top: 12px;">
+                    <span class="stat-label">Daily Requests</span>
+                    <span class="stat-value"><span id="used-requests">0</span> / <span id="max-requests">50</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div id="request-progress" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <button class="btn btn-primary" onclick="upgradePlan()">Upgrade to Pro</button>
+            </div>
+            
+            <!-- Usage Stats -->
+            <div class="card">
+                <div class="card-title">Usage This Month</div>
+                <div class="stat-row">
+                    <span class="stat-label">Total Messages</span>
+                    <span class="stat-value" id="total-messages">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Weather Lookups</span>
+                    <span class="stat-value" id="weather-usage">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Reminders Set</span>
+                    <span class="stat-value" id="reminder-usage">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Member Since</span>
+                    <span class="stat-value" id="member-since">-</span>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="card">
+                <div class="card-title">Available Features</div>
+                <ul class="feature-list" id="feature-list">
+                    <li>General Chat</li>
+                    <li>Weather Lookup</li>
+                    <li>Reminders (5 max)</li>
+                    <li>Web Search</li>
+                    <li class="feature-locked">File Operations</li>
+                    <li class="feature-locked">Advanced Search</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Chat Tab -->
+        <div id="chat" class="tab-content hidden">
+            <div class="header">
+                <h1>💬 Chat</h1>
+                <p>Message your AI assistant</p>
+            </div>
+            
+            <div class="card" style="min-height: 300px;">
+                <p style="text-align: center; color: #999; margin-top: 100px;">
+                    Chat feature coming soon!<br>
+                    Use the main bot chat for now.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Telegram Web App
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        
+        // Get user data from Telegram
+        const user = tg.initDataUnsafe.user;
+        
+        // Mock data - replace with actual API calls
+        const userData = {
+            plan: 'basic',
+            dailyRequests: 12,
+            maxRequests: 50,
+            totalMessages: 156,
+            weatherUsage: 23,
+            reminderUsage: 4,
+            memberSince: '2026-03-10'
+        };
+        
+        // Update UI with user data
+        function updateUI() {
+            if (user) {
+                document.getElementById('user-name').textContent = user.first_name || 'User';
+            }
+            
+            // Plan badge
+            const planBadge = document.getElementById('plan-badge');
+            planBadge.textContent = userData.plan.toUpperCase();
+            planBadge.className = `plan-badge plan-${userData.plan}`;
+            
+            // Request usage
+            document.getElementById('used-requests').textContent = userData.dailyRequests;
+            document.getElementById('max-requests').textContent = userData.maxRequests;
+            
+            // Progress bar
+            const percentage = (userData.dailyRequests / userData.maxRequests) * 100;
+            document.getElementById('request-progress').style.width = percentage + '%';
+            
+            // Stats
+            document.getElementById('total-messages').textContent = userData.totalMessages;
+            document.getElementById('weather-usage').textContent = userData.weatherUsage;
+            document.getElementById('reminder-usage').textContent = userData.reminderUsage;
+            document.getElementById('member-since').textContent = userData.memberSince;
+            
+            // Update feature list for Pro users
+            if (userData.plan === 'pro') {
+                const lockedFeatures = document.querySelectorAll('.feature-locked');
+                lockedFeatures.forEach(el => {
+                    el.classList.remove('feature-locked');
+                });
+            }
+        }
+        
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Upgrade plan
+        function upgradePlan() {
+            tg.showPopup({
+                title: 'Upgrade to Pro',
+                message: 'Get unlimited access to all features!\n\n✓ File Operations\n✓ Advanced Search\n✓ 200 Daily Requests\n✓ Priority Support',
+                buttons: [
+                    {id: 'upgrade', type: 'default', text: 'Contact Admin'},
+                    {type: 'cancel'}
+                ]
+            }, function(btnId) {
+                if (btnId === 'upgrade') {
+                    // Send message to bot
+                    tg.sendData(JSON.stringify({action: 'upgrade_request'}));
+                    tg.close();
+                }
+            });
+        }
+        
+        // Initialize
+        updateUI();
+        
+        // Set theme colors
+        tg.setHeaderColor(tg.themeParams.bg_color);
+    </script>
+</body>
+</html>
